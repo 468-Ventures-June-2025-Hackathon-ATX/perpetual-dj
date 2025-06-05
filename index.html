@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DJ Fullscreen Video</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body,
+        html {
+            height: 100%;
+            overflow: hidden;
+            background: black;
+        }
+
+        #fullscreen-video {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            object-fit: cover;
+            z-index: -1;
+        }
+    </style>
+</head>
+
+<body>
+    <video id="fullscreen-video" autoplay muted loop>
+        <source src="dj.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+
+    <script>
+        // Ensure video plays on page load
+        document.addEventListener('DOMContentLoaded', function () {
+            const video = document.getElementById('fullscreen-video');
+
+            // Try to play the video
+            video.play().catch(function (error) {
+                console.log('Auto-play was prevented:', error);
+                // If autoplay fails, you might want to show a play button
+                // For now, we'll just log the error
+            });
+
+            // Handle click to toggle play/pause (optional)
+            video.addEventListener('click', function () {
+                if (video.paused) {
+                    video.play();
+                } else {
+                    video.pause();
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>
