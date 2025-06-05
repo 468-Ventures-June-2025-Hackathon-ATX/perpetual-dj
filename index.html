@@ -26,7 +26,6 @@
             width: 100vw;
             height: 100vh;
             object-fit: cover;
-            z-index: -1;
         }
     </style>
 </head>
@@ -45,11 +44,9 @@
             // Try to play the video
             video.play().catch(function (error) {
                 console.log('Auto-play was prevented:', error);
-                // If autoplay fails, you might want to show a play button
-                // For now, we'll just log the error
             });
 
-            // Handle click to toggle play/pause (optional)
+            // Handle click to toggle play/pause
             video.addEventListener('click', function () {
                 if (video.paused) {
                     video.play();
